@@ -17,7 +17,7 @@ The best way to present `PurchaseView` is using a full-screen cover. Here’s an
 
 ```
 .fullScreenCover(isPresented: $showPurchaseSheet) {
-    PurchaseView(isPresented: $showPurchaseSheet)
+    PurchaseView()
 }
 ```
 
