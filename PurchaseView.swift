@@ -6,6 +6,12 @@
 //  --> x.com/adamlyttleapps
 //  --> github.com/adamlyttleapps
 
+// Special thanks:
+
+//  --> Mario (https://x.com/marioapps_com) for recommending changes to fix
+//      an issue Apple had rejecting the paywall due to excessive use of
+//      the word "FREE"
+
 import SwiftUI
 
 struct PurchaseView: View {
@@ -39,7 +45,7 @@ struct PurchaseView: View {
     var callToActionText: String {
         if let selectedProductTrial = purchaseModel.productDetails.first(where: {$0.productId == selectedProductId})?.hasTrial {
             if selectedProductTrial {
-                return "Try for Free"
+                return "Start Free Trial"
             }
             else {
                 return "Unlock Now"
@@ -189,8 +195,9 @@ struct PurchaseView: View {
                                         }
                                         Spacer()
                                         if productDetails.hasTrial {
-                                            Text("TRIAL")
-                                                .font(.title2.bold())
+                                            //removed: Some apps were being rejected with this caption present:
+                                            /*Text("FREE")
+                                                .font(.title2.bold())*/
                                         }
                                         else {
                                             VStack {
@@ -471,4 +478,8 @@ struct PurchaseView: View {
         return formatter.string(from: NSNumber(value: value))
     }
 
+}
+
+#Preview {
+    PurchaseView(isPresented: .constant(true))
 }
