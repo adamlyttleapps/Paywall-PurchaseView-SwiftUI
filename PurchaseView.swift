@@ -23,7 +23,7 @@ struct PurchaseView: View {
     @State private var showCloseButton = true
     @State private var progress: CGFloat = 0.0
 
-    @Binding var isPresented: Bool
+	@Environment(\.dismiss) var dismiss
     
     @State var showNoneRestoredAlert: Bool = false
     @State private var showTermsActionSheet: Bool = false
@@ -115,7 +115,7 @@ struct PurchaseView: View {
                         .frame(width: 20, alignment: .center)
                         .clipped()
                         .onTapGesture {
-                            isPresented = false
+                            dismiss()
                         }
                         .opacity(0.2)
                 }
@@ -402,13 +402,13 @@ struct PurchaseView: View {
         .onChange(of: purchaseModel.isSubscribed) { isSubscribed in
             if(isSubscribed) {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                    isPresented = false
+                    dismiss()
                 }
             }
         }
         .onAppear {
             if(purchaseModel.isSubscribed) {
-                isPresented = false
+                dismiss()
             }
         }
         
