@@ -20,7 +20,7 @@ struct PurchaseView: View {
     
     @State private var shakeDegrees = 0.0
     @State private var shakeZoom = 0.9
-    @State private var showCloseButton = false
+    @State private var showCloseButton = true
     @State private var progress: CGFloat = 0.0
 
     @Binding var isPresented: Bool
@@ -241,6 +241,7 @@ struct PurchaseView: View {
                             
                         }
                         
+                        /*
                         HStack {
                             Toggle(isOn: $freeTrial) {
                                 Text("Free Trial Enabled")
@@ -263,6 +264,7 @@ struct PurchaseView: View {
                         }
                         .background(Color.primary.opacity(0.05))
                         .cornerRadius(6)
+                        */
                         
                     }
                     .opacity(purchaseModel.isFetchingProducts ? 0 : 1)
